@@ -341,3 +341,46 @@ for iso in sorted(date_range):
         print(rline2(row))
     print(bar2('└', '┴', '┘'))
     print()
+
+# ── Monthly summary footer ─────────────────────────────────────────────────────
+
+today       = date.today()
+month_start = today.replace(day=1)
+month_range = set(
+    (month_start + timedelta(days=i)).isoformat()
+    for i in range((today - month_start).days + 1)
+)
+
+month_runtime = 0
+for proj_dir in os.listdir(base):
+    proj_path = os.path.join(base, proj_dir)
+    if not os.path.isdir(proj_path):
+        continue
+    for f in os.listdir(proj_path):
+        if not f.endswith('.jsonl'):
+            continue
+        fpath = os.path.join(proj_path, f)
+        mtime = os.path.getmtime(fpath)
+        if datetime.fromtimestamp(mtime).strftime('%Y-%m-%d') not in month_range:
+            continue
+        with open(fpath) as fh:
+            timestamps = []
+            for line in fh:
+                try:
+                    ts = json.loads(line).get('timestamp')
+                    if ts:
+                        timestamps.append(ts)
+                except Exception:
+                    pass
+        if len(timestamps) >= 2:
+            try:
+                parsed = [datetime.fromisoformat(ts.replace('Z', '+00:00')) for ts in timestamps]
+                for i in range(1, len(parsed)):
+                    gap = (parsed[i] - parsed[i - 1]).total_seconds()
+                    if gap <= 900:
+                        month_runtime += gap
+            except Exception:
+                pass
+
+month_h, month_m = divmod(int(month_runtime / 60), 60)
+print(f'This month you had Claude run for {month_h}h {month_m:02d}m  ({today.strftime("%B %Y")})')
