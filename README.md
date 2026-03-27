@@ -5,16 +5,19 @@ A collection of Claude Code skills by [@lucasmocellin](https://github.com/lucasm
 ## Install
 
 ```bash
-git clone https://github.com/lucasmocellin/claude-skills ~/git/claude-skills
+git clone https://github.com/lucasmocellin/claude-skills ~/.claude/skills/
 ```
 
-Then symlink whichever skills you want:
+That's it. All skills are immediately available as slash commands.
 
-```bash
-ln -s ~/git/claude-skills/claude-usage ~/.claude/skills/claude-usage
-```
+> **Already have a `~/.claude/skills/` directory?**
+> Move your existing skills into the repo folder first, then make it a git repo — or clone elsewhere and set `skillsDirectory` in your Claude Code settings to point to it:
+> ```json
+> // ~/.claude/settings.json
+> { "skillsDirectory": "~/git/claude-skills" }
+> ```
 
-Updates are automatic — just `git pull` to get the latest.
+Updates: `cd ~/.claude/skills && git pull`
 
 ## Skills
 
