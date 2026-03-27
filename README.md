@@ -10,12 +10,7 @@ git clone https://github.com/lucasmocellin/claude-skills ~/.claude/skills/
 
 That's it. All skills are immediately available as slash commands.
 
-> **Already have a `~/.claude/skills/` directory?**
-> Move your existing skills into the repo folder first, then make it a git repo — or clone elsewhere and set `skillsDirectory` in your Claude Code settings to point to it:
-> ```json
-> // ~/.claude/settings.json
-> { "skillsDirectory": "~/git/claude-skills" }
-> ```
+If your Claude skills folder is in a different location, replace `~/.claude/skills/` in the command above with your path.
 
 Updates: `cd ~/.claude/skills && git pull`
 
