@@ -4,15 +4,20 @@ A collection of Claude Code skills by [@lucasmocellin](https://github.com/lucasm
 
 ## Install
 
+**New install** (no existing `~/.claude/skills/` directory):
 ```bash
 git clone https://github.com/lucasmocellin/claude-skills ~/.claude/skills/
 ```
 
-That's it. All skills are immediately available as slash commands.
+**Already have a skills directory** — symlink individual skills instead:
+```bash
+git clone https://github.com/lucasmocellin/claude-skills ~/git/claude-skills
+ln -s ~/git/claude-skills/claude-usage ~/.claude/skills/claude-usage
+```
 
-If your Claude skills folder is in a different location, replace `~/.claude/skills/` in the command above with your path.
+All skills are immediately available as slash commands after install.
 
-Updates: `cd ~/.claude/skills && git pull`
+Updates: `cd ~/.claude/skills && git pull` (or `~/git/claude-skills` if you used the symlink path)
 
 ## Skills
 
