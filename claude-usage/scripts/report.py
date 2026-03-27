@@ -26,6 +26,20 @@ elif arg == '7d':
     end   = date.today()
     start = end - timedelta(days=6)
     label = f'Last 7 days ({start.strftime("%b %d")} – {end.strftime("%b %d")})'
+elif arg == 'month':
+    today = date.today()
+    start = today.replace(day=1)
+    # last day of month
+    next_month = (start.replace(day=28) + timedelta(days=4)).replace(day=1)
+    end   = next_month - timedelta(days=1)
+    label = start.strftime('%B %Y')
+elif len(arg) == 7 and arg[4] == '-':
+    # YYYY-MM format
+    year, month = int(arg[:4]), int(arg[5:])
+    start = date(year, month, 1)
+    next_month = (start.replace(day=28) + timedelta(days=4)).replace(day=1)
+    end   = next_month - timedelta(days=1)
+    label = start.strftime('%B %Y')
 else:
     # Single day
     start = end = date.fromisoformat(arg)
