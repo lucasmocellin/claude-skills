@@ -2,9 +2,9 @@
 """
 Claude Code weekly usage report.
 Usage:
-  python3 report.py            # last 7 days
-  python3 report.py YYYY-MM-DD # single day
-  python3 report.py week       # Mon–Sun of current week
+  python3 claude-usage.py            # last 7 days
+  python3 claude-usage.py YYYY-MM-DD # single day
+  python3 claude-usage.py week       # Mon–Sun of current week
 """
 import json
 import os

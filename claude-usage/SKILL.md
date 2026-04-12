@@ -19,13 +19,13 @@ Run the script via the Bash tool.
 
 ```bash
 # This week (default)
-python3 {SKILL_DIR}/scripts/report.py
+python3 {SKILL_DIR}/scripts/claude-usage.py
 
 # Rolling 7 days
-python3 {SKILL_DIR}/scripts/report.py 7d
+python3 {SKILL_DIR}/scripts/claude-usage.py 7d
 
 # Single day — resolve the date to ISO format first
-python3 {SKILL_DIR}/scripts/report.py 2026-03-25
+python3 {SKILL_DIR}/scripts/claude-usage.py 2026-03-25
 ```
 
 The `{SKILL_DIR}` placeholder resolves to the skill's base directory shown at the top of this file.
